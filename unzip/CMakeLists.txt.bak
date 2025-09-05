@@ -1,0 +1,37 @@
+        #库目标
+          cmake_minimum_required(VERSION 3.17.2)
+          
+        set(lib_name unzip)
+ 
+    #   project(${lib_name})
+        
+        set(unzip_h
+        crypt.h 
+        unzip.h 
+        ioapi.h 
+        ioapi_mem.h 
+ 
+        )
+        
+        set(unzip_src 
+        unzip.cpp 
+        ioapi.cpp 
+        ioapi_mem.cpp 
+        )
+    
+     include_directories("${CMAKE_CURENT_SOURCE_DIR}/../zlib-1.3.1")
+    
+    	add_library(${lib_name}
+    	STATIC
+      ${unzip_h}
+      ${unzip_src}
+      
+    	)
+    	
+    target_link_libraries(${lib_name} PRIVATE zlib)
+    	
+     	target_include_directories(
+      	${lib_name} 
+     	 PRIVATE 
+     	 "${CMAKE_CURENT_SOURCE_DIR}/../zlib-1.3.1/"
+    	 )
