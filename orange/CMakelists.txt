@@ -1,0 +1,129 @@
+  
+  set(lib_name orange2d)
+  project(${lib_name})
+  set(${lib_name}_h
+	  Header.h
+  
+  		OG_Engine.h
+  		
+       custom_mix_pitch_func.inc
+       json.hpp
+       OGAudioEngine.h
+       Texture2D.h
+       OGAction.h
+       OGActionManager.h
+       OGAutoreleasePool.h
+       OGDirector.h
+       OGEventDispatcher.h
+       OGFont.h
+       OGGeometry.h
+       OGInput.h
+       OGJsonLayer.h
+       OGJsonParser.h
+       OGJsonTiledMap.h
+       OGKeyCode.h
+       OGMathBase.h
+       OGNode.h
+       OGParticleExamples.h
+       OGParticleSystem.h
+       OGPlatformMacros.h
+       OGRandom.h
+       OGRef.h
+       OGScene.h
+       OGSprite.h
+       OGSpriteFrame.h
+       OGTimer.h
+       OGTouch.h
+       OGTypes.h
+       OGUpdate.h
+       OGValue.h
+       OGVector.h
+ 
+       SDLView.h
+       ulist.h
+       Vec2.h
+     )
+       
+      
+      set(${lib_name}_src
+       OGAudioEngine.cpp
+       Texture2D.cpp
+ 
+       OGAction.cpp
+       OGActionManager.cpp
+       OGAutoreleasePool.cpp
+       OGDirector.cpp
+       OGEventDispatcher.cpp
+       OGGeometry.cpp 
+       
+       OGJsonLayer.cpp
+       OGJsonParser.cpp
+       OGJsonTiledMap.cpp
+       OGNode.cpp
+       OGParticleExamples.cpp
+       OGParticleSystem.cpp
+       OGRandom.cpp
+       OGRef.cpp
+       OGScene.cpp
+       OGSprite.cpp
+       OGSpriteFrame.cpp
+       OGTouch.cpp
+       OGTypes.cpp
+       OGValue.cpp
+       SDLView.cpp
+       ulist.cpp
+       Vec2.cpp 
+       )
+       
+       
+       add_library(${lib_name}
+    	STATIC
+      ${${lib_name}_h}
+      ${${lib_name}_src}
+      
+    	)
+    	
+    	
+    	 target_link_libraries(${lib_name} 
+    	 zlibstatic 
+    	  
+	
+	SDL2
+	SDL2main
+	SDL2_image
+	SDL2_mixer
+	SDL2_ttf
+	
+	unzip 
+	
+)
+    	include_directories( 
+    	".."
+    	"../SDL-release-2.30.11/include/"
+ 
+	 "../SDL_image-release-2.8.4/include/"
+	 "../SDL_mixer-release-2.8.0/include/"
+	 "../SDL_ttf-release-2.24.0/include/"
+	 
+	  "../unzip/"
+ 
+    	)
+    	
+     	target_include_directories(
+      	${lib_name} 
+     	 PUBLIC 
+     	
+	
+	"../SDL-release-2.30.11/include/"
+ 
+	"../SDL_image-release-2.8.4/include/"
+	 "../SDL_mixer-release-2.8.0/include/"
+	 "../SDL_ttf-release-2.24.0/include/"
+	 
+	  "../unzip/"
+ "../.."
+ 
+    	 )
+    	 
+    	# target_link_libraries(${lib_name}  ${${lib_name}_h})  
+    target_include_directories(${lib_name}  PUBLIC ${CMAKE_CURRENT_LIST_DIR} )
